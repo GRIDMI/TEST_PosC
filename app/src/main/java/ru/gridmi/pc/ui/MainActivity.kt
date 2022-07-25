@@ -9,6 +9,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import ru.gridmi.pc.R
 import ru.gridmi.pc.tool.API
+import ru.gridmi.pc.ui.fragment.ListOfProductsFragment
 import ru.gridmi.pc.ui.fragment.ProductFragment
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +33,12 @@ class MainActivity : AppCompatActivity() {
                 render()
             }
 
+            render()
+
+        }
+
+        if (savedInstanceState == null) {
+            onMoveFragment(ListOfProductsFragment())
         }
 
     }

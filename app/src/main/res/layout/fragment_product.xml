@@ -7,69 +7,71 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:shrinkColumns="0"
         android:padding="8dp">
 
         <TableRow>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/codeView"
-                android:layout_weight="1"
-                android:text="@string/code_of_product_simple"/>
+                android:text="@string/code_of_product_simple"
+                android:gravity="start|center_vertical"/>
         </TableRow>
 
         <TableRow>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/nameView"
-                android:layout_weight="1"
-                android:text="@string/name_of_product"/>
+                android:text="@string/name_of_product"
+                android:gravity="start|center_vertical"/>
         </TableRow>
 
         <TableRow>
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_weight="4"
-                android:text="@string/remainder"/>
+                android:text="@string/remainder"
+                android:gravity="start|center_vertical"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/remainderView"
-                android:layout_weight="1"
-                android:text="@string/remainder_of_product"/>
+                android:text="@string/remainder_of_product"
+                android:gravity="end|center_vertical"/>
         </TableRow>
 
         <TableRow>
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_weight="4"
-                android:text="@string/price"/>
+                android:text="@string/price"
+                android:gravity="start|center_vertical"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/priceView"
-                android:layout_weight="1"
-                android:text="@string/price_of_product"/>
+                android:text="@string/price_of_product"
+                android:gravity="end|center_vertical"/>
         </TableRow>
 
         <TableRow>
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_weight="4"
-                android:text="@string/retail_amount"/>
+                android:text="@string/retail_amount"
+                android:gravity="start|center_vertical"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/retailAmountView"
-                android:layout_weight="1"
-                android:text="(цена * остаток)\u20BD"/>
+                android:text="(цена * остаток)\u20BD"
+                android:gravity="end|center_vertical"/>
         </TableRow>
 
         <TableRow>
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_weight="4"
-                android:text="@string/alcohol_product"/>
+                android:text="@string/alcohol_product"
+                android:gravity="start|center_vertical"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/markOfAlcoholView"
-                android:layout_weight="1"
+                android:gravity="end|center_vertical"
                 android:text="@string/yes"/>
         </TableRow>
 
         <TableRow>
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_weight="4"
-                android:text="@string/alcohol_content"/>
+                android:text="@string/alcohol_content"
+                android:gravity="start|center_vertical"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/contentAlcoholView"
-                android:layout_weight="1"
+                android:gravity="end|center_vertical"
                 android:text="0.00"/>
         </TableRow>
 

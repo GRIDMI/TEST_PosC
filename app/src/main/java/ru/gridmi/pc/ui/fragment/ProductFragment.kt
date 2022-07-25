@@ -1,9 +1,7 @@
 package ru.gridmi.pc.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_product.view.*
 import ru.gridmi.pc.MainApp
 import ru.gridmi.pc.R
@@ -18,64 +16,21 @@ class ProductFragment: MainFragment() {
 
         val product = requireArguments().getSerializable("product") as Product
 
+        view.nameView.text = product.name
         view.codeView.text = MainApp.context.resources.getString(R.string.code_of_product, product.code)
+        view.remainderView.text = MainApp.context.getString(R.string.remainder_of_product, product.remainder)
+        view.priceView.text = MainApp.context.getString(R.string.price_of_product, product.price)
+        view.retailAmountView.text = "%.2f\u20BD".format(product.price * product.remainder)
 
-        //        <TableRow>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:id="@+id/nameView"
-        //                android:layout_weight="1"
-        //                android:text="@string/name_of_product"/>
-        //        </TableRow>
-        //
-        //        <TableRow>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:layout_weight="4"
-        //                android:text="@string/remainder"/>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:id="@+id/remainderView"
-        //                android:layout_weight="1"
-        //                android:text="@string/remainder_of_product"/>
-        //        </TableRow>
-        //
-        //        <TableRow>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:layout_weight="4"
-        //                android:text="@string/price"/>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:id="@+id/priceView"
-        //                android:layout_weight="1"
-        //                android:text="@string/price_of_product"/>
-        //        </TableRow>
-        //
-        //        <TableRow>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:layout_weight="4"
-        //                android:text="@string/retail_amount"/>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:id="@+id/retailAmountView"
-        //                android:layout_weight="1"
-        //                android:text="(цена * остаток)\u20BD"/>
-        //        </TableRow>
-        //
-        //        <TableRow>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:layout_weight="4"
-        //                android:text="@string/alcohol_product"/>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:id="@+id/markOfAlcoholView"
-        //                android:layout_weight="1"
-        //                android:text="@string/yes"/>
-        //        </TableRow>
-        //
-        //        <TableRow>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:layout_weight="4"
-        //                android:text="@string/alcohol_content"/>
-        //            <androidx.appcompat.widget.AppCompatTextView
-        //                android:id="@+id/contentAlcoholView"
-        //                android:layout_weight="1"
-        //                android:text="0.00"/>
-        //        </TableRow>
+        view.markOfAlcoholView.setText(when(product.findAttr(Product.AttrEnum.TYPE_OF_ALCOHOLIC_PRODUCT) != null) {
+            true -> R.string.yes
+            else -> R.string.no
+        })
+
+        view.contentAlcoholView.text = product.findAttr(Product.AttrEnum.ALCOHOL_CONTENTING).let {
+            if (it != null) return@let "%.2f%%".format(it.value?.toFloatOrNull() ?: 0L)
+            return@let "-"
+        }
 
     }
 

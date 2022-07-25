@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentPadding="8dp"
+        android:layout_margin="8dp">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:shrinkColumns="0">
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/nameView"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/name_of_product"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/remainderView"
+                    android:gravity="end|center_vertical"
+                    android:text="@string/remainder_of_product"/>
+
+            </TableRow>
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/codeView"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/code_of_product"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/priceView"
+                    android:gravity="end|center_vertical"
+                    android:text="@string/price_of_product"/>
+
+            </TableRow>
+
+        </TableLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

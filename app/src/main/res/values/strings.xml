@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PosCenter</string>
+    <string name="name_of_product">Наименование товара</string>
+    <string name="remainder_of_product">%.2f</string>
+    <string name="code_of_product">Код: %d</string>
+    <string name="price_of_product">%.2f\u20BD</string>
+    <string name="error_loading">Ошибка загрузки</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="code_of_product_simple">Код товара</string>
+    <string name="remainder">Остаток</string>
+    <string name="price">Цена</string>
+    <string name="retail_amount">Розничная сумма</string>
+    <string name="alcohol_product">Алкогольная продуция</string>
+    <string name="alcohol_content">Содержание спирта</string>
+</resources>

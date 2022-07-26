@@ -13,6 +13,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_list_of_products.view.*
 import kotlinx.android.synthetic.main.fragment_list_of_products_item.view.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.gridmi.pc.MainApp
 import ru.gridmi.pc.MainApp.Companion.toStringFromRes
@@ -115,13 +116,13 @@ class ListOfProductsFragment: MainFragment() {
 
         val data = MutableLiveData(LoadState.init())
 
-        fun loadProducts() = viewModelScope.launch {
+        fun loadProducts() = viewModelScope.launch(Dispatchers.IO) {
 
-            data.value = LoadState(LoadState.State.LOAD, null)
+            data.postValue(LoadState(LoadState.State.LOAD, data = null))
 
-            data.value = LoadState(LoadState.State.DONE, runCatching {
+            data.postValue(LoadState(LoadState.State.DONE, runCatching {
                 API.listOfProducts()
-            }.resultToAny())
+            }.resultToAny()))
 
         }
 

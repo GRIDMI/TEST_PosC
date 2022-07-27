@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +20,7 @@ import ru.gridmi.pc.R
 import ru.gridmi.pc.model.dto.Product
 import ru.gridmi.pc.tool.API
 import ru.gridmi.pc.tool.LoadState
+import ru.gridmi.pc.tool.MLD
 import ru.gridmi.pc.tool.TinyHelper.resultToAny
 import ru.gridmi.pc.ui.MainFragment
 import java.util.*
@@ -114,7 +114,7 @@ class ListOfProductsFragment: MainFragment() {
 
     class Model: ViewModel() {
 
-        val data = MutableLiveData(LoadState.init())
+        val data: MLD<LoadState> = MLD(LoadState.init())
 
         fun loadProducts() = viewModelScope.launch(Dispatchers.IO) {
 

@@ -1,12 +1,17 @@
 package ru.gridmi.pc.tool
 
-import java.util.*
+import ru.gridmi.pc.tool.TinyHelper.likeSync
+import java.util.concurrent.atomic.AtomicInteger
 
-class LoadState(val state: State, val data: Any?) {
+class LoadState(val state: State, val data: Any?): MLD.OnDealloc {
 
-    private val id = UUID.randomUUID().toString()
+    private val id = sequence.getAndIncrement()
 
-    fun isHandled() = !isOnceHandledWithBlock(id)
+    fun isHandled() = handled.add(id)
+
+    override fun onDealloc() {
+        handled.remove(id)
+    }
 
     enum class State {
         INIT,
@@ -16,13 +21,8 @@ class LoadState(val state: State, val data: Any?) {
 
     companion object {
 
-        private val handled: MutableList<String> = mutableListOf()
-
-        fun isOnceHandledWithBlock(id: String): Boolean {
-            val once: Boolean = !handled.contains(id)
-            if (once) handled.add(id)
-            return once
-        }
+        private val sequence = AtomicInteger(0)
+        private val handled = mutableSetOf<Int>().likeSync()
 
         fun init() = LoadState(state = State.INIT, data = null)
 

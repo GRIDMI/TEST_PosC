@@ -7,7 +7,7 @@ class LoadState(val state: State, val data: Any?): MLD.OnDealloc {
 
     private val id = sequence.getAndIncrement()
 
-    fun isHandled() = handled.add(id)
+    fun isHandled() = !handled.add(id)
 
     override fun onDealloc() {
         handled.remove(id)
